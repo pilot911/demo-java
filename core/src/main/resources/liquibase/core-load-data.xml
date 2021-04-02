@@ -1,0 +1,108 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation=
+                "http://www.liquibase.org/xml/ns/dbchangelog
+                 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="kiselevich" id="20160120">
+        <loadData file="${csv_folder}/article.csv"
+                  separator=","
+                  tableName="${articleTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="${titleField}" type="STRING"/>
+            <column name="${urlField}" type="STRING"/>
+            <column name="${createdAtField}" type="DATETIME"/>
+            <column name="${updatedAtField}" type="DATETIME"/>
+            <column name="${startedAtField}" type="DATETIME"/>
+            <column name="${activeField}" type="BOOLEAN"/>
+            <column name="${userIdField}" type="NUMERIC"/>
+            <column name="TAG_ID" type="NUMERIC"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/user.csv"
+                  separator=","
+                  tableName="${userTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="USERNAME" type="STRING"/>
+            <column name="PASSWORD" type="STRING"/>
+            <column name="${activeField}" type="BOOLEAN"/>
+            <column name="${createdAtField}" type="DATETIME"/>
+            <column name="${updatedAtField}" type="DATETIME"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/user_group.csv"
+                  separator=","
+                  tableName="${userGroupTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="${titleField}" type="STRING"/>
+            <column name="${codeField}" type="STRING"/>
+            <column name="${createdAtField}" type="DATETIME"/>
+            <column name="${updatedAtField}" type="DATETIME"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/user_authority.csv"
+                  separator=","
+                  tableName="${userAuthorityTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="authority" type="STRING"/>
+            <column name="${descriptionField}" type="STRING"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/user_group_to_user_authority.csv"
+                  separator=","
+                  tableName="${userGroupToAuthorityTable}">
+            <column name="USER_GROUP_ID" type="NUMERIC"/>
+            <column name="USER_AUTHORITY_ID" type="NUMERIC"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/user_to_user_group.csv"
+                  separator=","
+                  tableName="${userGroupToUserTable}">
+            <column name="USER_GROUP_ID" type="NUMERIC"/>
+            <column name="USER_ID" type="NUMERIC"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/tag.csv"
+                  separator=","
+                  tableName="${tagTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="${titleField}" type="STRING"/>
+            <column name="${descriptionField}" type="STRING"/>
+            <column name="${urlField}" type="STRING"/>
+            <column name="${codeField}" type="STRING"/>
+            <column name="${activeField}" type="BOOLEAN"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/tag_to_article.csv"
+                  separator=","
+                  tableName="${tagToArticleTable}">
+            <column name="TAG_ID" type="NUMERIC"/>
+            <column name="ARTICLE_ID" type="NUMERIC"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/file.csv"
+                  separator=","
+                  tableName="${fileTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="${titleField}" type="STRING"/>
+            <column name="${descriptionField}" type="STRING"/>
+            <column name="${activeField}" type="BOOLEAN"/>
+            <column name="${userIdField}" type="NUMERIC"/>
+            <column name="UPLOADED_NAME" type="STRING"/>
+            <column name="UPLOADED_SIZE" type="NUMERIC"/>
+            <column name="UPLOADED_MIME_TYPE" type="STRING"/>
+            <column name="UPLOADED_EXTENSION" type="STRING"/>
+            <column name="UPLOADED_WIDTH" type="NUMERIC"/>
+            <column name="UPLOADED_HEIGHT" type="NUMERIC"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/file_data.csv"
+                  separator=","
+                  tableName="${fileDataTable}">
+            <column name="${descriptionField}" type="STRING"/>
+            <column name="FILE_ID" type="NUMERIC"/>
+            <column name="ARTICLE_ID" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

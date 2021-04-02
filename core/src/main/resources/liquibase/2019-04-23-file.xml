@@ -1,0 +1,43 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kiselevich" id="${fileTable}">
+        <comment>Таблица статей</comment>
+
+        <createTable tableName="${fileTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="${titleField}" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${descriptionField}" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${activeField}" type="BOOLEAN" defaultValueBoolean="false" />
+            <column name="${createdAtField}" type="DATETIME" />
+            <column name="${updatedAtField}" type="DATETIME" />
+            <column name="${userIdField}" type="BIGINT" />
+
+            <column name="UPLOADED_NAME" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPLOADED_SIZE" type="NUMERIC">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPLOADED_MIME_TYPE" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPLOADED_EXTENSION" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPLOADED_WIDTH" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column name="UPLOADED_HEIGHT" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

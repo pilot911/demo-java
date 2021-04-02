@@ -1,0 +1,27 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation=
+                "http://www.liquibase.org/xml/ns/dbchangelog
+                 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="kiselevich" id="20210120">
+
+        <loadData file="${csv_folder}/acl_sid.csv"
+                  separator=","
+                  tableName="${aclSidTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="principal" type="NUMERIC"/>
+            <column name="SID" type="STRING"/>
+        </loadData>
+
+        <loadData file="${csv_folder}/acl_class.csv"
+                  separator=","
+                  tableName="${aclClassTable}">
+            <column name="${idField}" type="NUMERIC"/>
+            <column name="class" type="STRING"/>
+        </loadData>
+
+
+    </changeSet>
+</databaseChangeLog>

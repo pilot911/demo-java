@@ -1,0 +1,42 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kiselevich" id="${articleTable}">
+        <comment>Таблица статей</comment>
+
+        <createTable tableName="${articleTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="${titleField}" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${urlField}" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATE" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="CONTENT" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTENT_SHORT" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${activeField}" type="BOOLEAN" defaultValueBoolean="false">
+            </column>
+            <column name="${createdAtField}" type="DATETIME">
+            </column>
+            <column name="${updatedAtField}" type="DATETIME">
+            </column>
+            <column name="${startedAtField}" type="DATETIME">
+            </column>
+            <column name="${userIdField}" type="BIGINT">
+            </column>
+            <column name="TAG_ID" type="BIGINT">
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

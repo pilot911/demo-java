@@ -1,0 +1,45 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <property name="csv_folder" value="classpath:liquibase/csv_core"/>
+
+    <property name="idField" value="ID"/>
+    <property name="titleField" value="TITLE"/>
+    <property name="descriptionField" value="DESCRIPTION"/>
+    <property name="urlField" value="URL"/>
+    <property name="codeField" value="CODE"/>
+    <property name="createdAtField" value="CREATED_AT"/>
+    <property name="updatedAtField" value="UPDATED_AT"/>
+    <property name="startedAtField" value="STARTED_AT"/>
+    <property name="activeField" value="ACTIVE"/>
+    <property name="codeField" value="CODE"/>
+    <property name="sortField" value="SORT"/>
+    <property name="userIdField" value="USER_ID"/>
+
+    <property name="articleTable" value="ARTICLE"/>
+    <property name="fileTable" value="FILE"/>
+    <property name="tagTable" value="TAG"/>
+    <property name="tagToArticleTable" value="TAG_TO_ARTICLE"/>
+    <property name="tagToFileTable" value="TAG_TO_FILE"/>
+    <property name="fileDataTable" value="FILE_DATA"/>
+    <property name="userTable" value="USER"/>
+    <property name="userGroupTable" value="USER_GROUP"/>
+    <property name="userGroupToUserTable" value="USER_GROUP_TO_USER"/>
+    <property name="userAuthorityTable" value="USER_AUTHORITY"/>
+    <property name="userGroupToAuthorityTable" value="USER_GROUP_TO_USER_AUTHORITY"/>
+    <property name="refreshTokenTable" value="JWT_REFRESH_TOKEN"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql, hsql"/>
+
+    <include file="2019-04-23-article.xml" relativeToChangelogFile="true"/>
+    <include file="2019-04-23-file.xml" relativeToChangelogFile="true"/>
+    <include file="2019-04-26-tag.xml" relativeToChangelogFile="true"/>
+    <include file="2019-04-29-file-data.xml" relativeToChangelogFile="true"/>
+    <include file="2020-01-13-user.xml" relativeToChangelogFile="true"/>
+    <include file="2020-01-13-user_group.xml" relativeToChangelogFile="true"/>
+    <include file="2020-01-13-refresh_token.xml" relativeToChangelogFile="true"/>
+    <include file="2020-01-14-user_authority.xml" relativeToChangelogFile="true"/>
+
+    <include file="core-load-data.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

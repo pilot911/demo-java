@@ -1,0 +1,6 @@
+id,title,description,active,uploaded_name,uploaded_size,uploaded_mime_type,uploaded_extension,uploaded_width,uploaded_height,user_id
+1,Изображение природы 1,Описание Изображение природы 1,true,1231.jpg,419042,image/jpeg,jpg,1200,900,1
+2,Изображение природы 2,Описание Изображение природы 2,true,1232.jpg,6131082,image/jpeg,jpg,5353,3569,1
+3,Изображение природы 3,Описание Изображение природы 3,true,1233.jpg,663960,image/jpeg,jpg,2560,1600,1
+4,Изображение природы 4,Описание Изображение природы 4,true,1234.jpg,13356882,image/jpeg,jpg,4270,2847,1
+5,Изображение природы 5,Описание Изображение природы 5,true,1235.jpg,804133,image/jpeg,jpg,1920,1080,1

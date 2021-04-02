@@ -1,0 +1,7 @@
+ID,CODE,DESCRIPTION
+1,ADMIN,"Администратор, имеющий полные права в системе"
+2,CREATE_ARTICLE,"Создавать статью"
+3,UPDATE_ARTICLE,"Обновлять любую статью"
+4,UPDATE_ARTICLE_OWN,"Обновлять собственную статью"
+5,DELETE_ARTICLE,"Удалять любую статью"
+6,DELETE_ARTICLE_OWN,"Удалять собственную статью"

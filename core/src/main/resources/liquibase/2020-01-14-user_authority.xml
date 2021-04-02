@@ -1,0 +1,46 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kiselevich" id="${userAuthorityTable}">
+        <comment>Таблица прав пользователей и групп</comment>
+
+        <createTable tableName="${userAuthorityTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="${codeField}" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(400)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint
+                columnNames="${codeField}"
+                constraintName="UNIQ_AUTHORITY_CODE"
+                tableName="${userAuthorityTable}"/>
+
+        <createTable tableName="${userGroupToAuthorityTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="USER_GROUP_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_USER_GROUP_ID"
+                             references="${userGroupTable}(${idField})"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+            <column name="USER_AUTHORITY_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_USER_AUTHORITY_ID"
+                             references="${userAuthorityTable}(${idField})"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint
+                columnNames="USER_GROUP_ID, USER_AUTHORITY_ID"
+                constraintName="UNIQ_G_A"
+                tableName="${userGroupToAuthorityTable}"/>
+    </changeSet>
+</databaseChangeLog>

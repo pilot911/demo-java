@@ -1,0 +1,6 @@
+id,class
+1,ru.telenok.newspaper.common.model.Article
+2,ru.telenok.newspaper.common.model.Tag
+3,ru.telenok.newspaper.common.model.User
+4,ru.telenok.newspaper.common.model.UserGroup
+5,ru.telenok.newspaper.common.model.File

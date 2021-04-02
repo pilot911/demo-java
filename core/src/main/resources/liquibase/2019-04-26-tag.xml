@@ -1,0 +1,81 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="kiselevich" id="${tagTable}">
+        <comment>Таблица статей</comment>
+
+        <createTable tableName="${tagTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="${titleField}" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${descriptionField}" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${urlField}" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${codeField}" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${activeField}" type="BOOLEAN" defaultValueBoolean="false">
+            </column>
+            <column name="${createdAtField}" type="DATETIME">
+            </column>
+            <column name="${updatedAtField}" type="DATETIME">
+            </column>
+            <column name="${userIdField}" type="BIGINT">
+            </column>
+        </createTable>
+
+        <createIndex indexName="tag_url_unique"
+                     tableName="${tagTable}"
+                     unique="true">
+            <column name="${urlField}"/>
+        </createIndex>
+
+        <createTable tableName="${tagToArticleTable}">
+            <column name="TAG_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_TAG_ID_TO_ARTICLE_ID"
+                             references="${tagTable}(ID)"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+            <column name="ARTICLE_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_ARTICLE_ID_TO_TAG_ID"
+                             references="${articleTable}(ID)"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="tag_to_article_unique"
+                     tableName="${tagToArticleTable}"
+                     unique="true">
+            <column name="TAG_ID"/>
+            <column name="ARTICLE_ID"/>
+        </createIndex>
+
+        <createTable tableName="${tagToFileTable}">
+            <column name="TAG_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_TAG_ID_TO_FILE_ID"
+                             references="${tagTable}(ID)"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+            <column name="FILE_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_FILE_ID_TO_TAG_ID"
+                             references="${fileTable}(ID)"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="tag_to_file_unique"
+                     tableName="${tagToFileTable}"
+                     unique="true">
+            <column name="TAG_ID"/>
+            <column name="FILE_ID"/>
+        </createIndex>
+
+    </changeSet>
+</databaseChangeLog>

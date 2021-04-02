@@ -1,0 +1,33 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kiselevich" id="${fileDataTable}">
+        <comment>Таблица с информацией о файле и его связях</comment>
+
+        <createTable tableName="${fileDataTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="${descriptionField}" type="VARCHAR(255)" />
+            <column name="${sortField}" type="BIGINT" defaultValue="0"/>
+            <column name="FILE_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_FILE_ID_TO_FILE_ID"
+                             references="${fileTable}(ID)"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+            <column name="ARTICLE_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_ARTICLE_ID_TO_FILE_ID"
+                             references="${articleTable}(ID)"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="file_to_article_unique"
+                     tableName="${fileDataTable}"
+                     unique="true">
+            <column name="FILE_ID"/>
+            <column name="ARTICLE_ID"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

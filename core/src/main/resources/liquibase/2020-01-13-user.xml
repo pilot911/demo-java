@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kiselevich" id="${userTable}">
+        <comment>Таблица пользователей</comment>
+
+        <createTable tableName="${userTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="USERNAME" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${createdAtField}" type="DATETIME">
+            </column>
+            <column name="${updatedAtField}" type="DATETIME">
+            </column>
+            <column name="${activeField}" type="BOOLEAN">
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

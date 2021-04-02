@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <property name="csv_folder" value="classpath:liquibase/csv_auth"/>
+
+    <property name="aclSidTable" value="acl_sid"/>
+    <property name="aclClassTable" value="acl_class"/>
+    <property name="autoIncrement" value="true" dbms="mysql, hsql"/>
+
+    <include file="2019-04-23-acl.xml" relativeToChangelogFile="true"/>
+
+    <include file="auth-load-data.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

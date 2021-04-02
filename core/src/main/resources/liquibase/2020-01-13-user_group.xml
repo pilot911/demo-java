@@ -1,0 +1,50 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="kiselevich" id="${userGroupTable}">
+        <comment>Таблица пользователей</comment>
+
+        <createTable tableName="${userGroupTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="${titleField}" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${codeField}" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="${createdAtField}" type="DATETIME">
+            </column>
+            <column name="${updatedAtField}" type="DATETIME">
+            </column>
+        </createTable>
+
+        <addUniqueConstraint
+                columnNames="${codeField}"
+                constraintName="UNIQ_GROUP_CODE"
+                tableName="${userGroupTable}"/>
+
+        <createTable tableName="${userGroupToUserTable}">
+            <column name="${idField}" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="USER_GROUP_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_USER__GROUP_ID"
+                             references="${userGroupTable}(${idField})"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+            <column name="USER_ID" type="BIGINT">
+                <constraints foreignKeyName="FK_USER__ID"
+                             references="${userTable}(${idField})"
+                             deleteCascade="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint
+                columnNames="USER_GROUP_ID, USER_ID"
+                constraintName="UNIQ_G_U"
+                tableName="${userGroupToUserTable}"/>
+    </changeSet>
+</databaseChangeLog>

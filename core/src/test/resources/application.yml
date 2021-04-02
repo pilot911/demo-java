@@ -1,0 +1,12 @@
+info:
+  app:
+    description: Service for search in sphinx index
+    name: test
+
+spring:
+  application:
+    name: test
+  jmx:
+    enabled: false
+  profiles:
+    active: test
